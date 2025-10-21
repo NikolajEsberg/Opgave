@@ -1,5 +1,8 @@
 package MariosPizzaBar;
 
+import NikolajsPizzabar.Order;
+import NikolajsPizzabar.Pizza;
+
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
@@ -59,6 +62,98 @@ public class Test {
             }
         }
     }
+
+
+
+
+
+
+
+//Menu for Alfanso
+
+//Den bruger et while (true)-loop, hvilket betyder at menuen kører i en uendelig løkke, indtil der sker et “break” eller return et sted senere i koden.
+    private static String alfonsoMenu(MariosPizzaBar.OrderManager orderManager, Scanner scanner) {
+        while (true) {
+            System.out.println("\n[ALFONSO] Hvad vil du gøre?");
+            System.out.println("1. Vis menukort");
+            System.out.println("2. Opret ny ordre");
+            System.out.println("3. Se ordrer klar til afhentning");
+            System.out.println("4. Markér ordre som hentet");
+            System.out.println("5. Skift bruger til Mario");
+            System.out.println("6. Afslut program");
+
+//String choice funktionen bruges til at man f.eks. kan taste “1”, “2” eller “6”) ud fra vores While (true-loop)
+            String choice = scanner.nextLine();
+
+            switch (choice) {
+                case "1":
+                    // Vis hele menukortet
+                    for (MariosPizzaBar.Pizza p : MariosPizzaBar.Pizza.values()) {
+                        System.out.println(p);
+                    }
+                    break;
+
+                case "2":
+                    try {
+                        System.out.print("Indtast pizzanummer: ");
+                        int pizzaNr = Integer.parseInt(scanner.nextLine());
+
+                        //Find pizzaen gennem pizza ID; returnerer null hvis ikke fundet
+                        MariosPizzaBar.Pizza pizza = Pizza.getByNumber(pizzaNr);
+                        if (pizza == null) {
+                            System.out.println("Ugyldigt pizzanummer.");
+                            break;
+                        }
+
+                        System.out.print("Indtast afhentningstid (HH:mm): ");
+                        String timeInput = scanner.nextLine();
+                        String[] parts = timeInput.split(":");
+                        int hour = Integer.parseInt(parts[0]);
+                        int minute = Integer.parseInt(parts[1]);
+
+                        // Opret afhentningstidspunkt
+                        LocalDateTime pickup = LocalDateTime.now()
+                                .withHour(hour)
+                                .withMinute(minute)
+                                .withSecond(0)
+                                .withNano(0);
+
+                        // Opret ny ordre
+                        MariosPizzaBar.Order order = new Order(pizza, pickup);
+                        orderManager.addOrder(order);
+                        System.out.println("Ordre oprettet: " + order);
+                    } catch (Exception e) {
+                        System.out.println("Fejl i input: " + e.getMessage());
+                    }
+                    break;
+
+                case "3":
+                    orderManager.showReadyOrders();
+                    break;
+
+                case "4":
+                    System.out.print("Indtast ordre-ID som er hentet: ");
+                    try {
+                        int id = Integer.parseInt(scanner.nextLine());
+                        orderManager.completeReadyOrder(id);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Ugyldigt ID.");
+                    }
+                    break;
+
+                case "5":
+                    return "Mario";
+
+                case "6":
+                    System.out.println("Farvel!");
+                    System.exit(0);
+
+                default:
+                    System.out.println("Ugyldigt valg.");
+            }
+        }
+    }
+}
 
     private static String marioMenu(OrderManager orderManager, Scanner scanner) {
         while (true) {
