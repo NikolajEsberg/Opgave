@@ -49,7 +49,7 @@ public class OrderManager {
         if (order != null) {
             readyOrders.remove(order);
             completedOrders.add(order);
-            System.out.prinln("Ordre afsluttet og arkiveret: " + order);
+            System.out.println("Ordre afsluttet og arkiveret: " + order);
         } else {
             System.out.println("Ordre ikee fundet i klar-til-afhenting listen. ");
         }
