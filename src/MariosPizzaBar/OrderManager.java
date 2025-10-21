@@ -86,5 +86,6 @@ public class OrderManager {
     // Setters som bruger hvis man fx skal indlæse data fra en fil
     public void setActiveOrders(List<Order> activeOrders) { this.activeOrders = activeOrders; }
     public void setCompletedOrders(List<Order> completedOrders) { this.completedOrders = completedOrders;}
+    public void setReadyOrders(List<Order> completedOrders) { this.readyOrders = readyOrders; }
 }
 
