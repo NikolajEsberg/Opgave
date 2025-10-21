@@ -1,6 +1,6 @@
 package MariosPizzaBar;
 
-public enum Pizza {
+public enum Pizza { 
     MARGHERITA(1, "Margherita", 90),
     PEPPERONI(2, "Pepperoni", 95),
     VEGETAR(3, "Vegetar", 100),
