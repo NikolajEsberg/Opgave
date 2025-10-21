@@ -1,5 +1,6 @@
 package MariosPizzaBar;
-
+//Enum Pizza repræsentere faste værdier. Altså herunder kan vi se Menukortet for Marios Pizzarier.
+//Vi har tilføjet 30 forskellige pizzaer, og hvert pizza består af et nummer, navn og pris.
 public enum Pizza { 
     MARGHERITA(1, "Margherita", 90),
     PEPPERONI(2, "Pepperoni", 95),
@@ -32,21 +33,26 @@ public enum Pizza {
     MEDITERRANEAN(29, "Mediterranean", 95),
     FOUR_CHEESES(30, "Four Cheeses", 100);
 
-
+    //Felterne er erklæret som private for at sikre indkapsling (encapsulation).
+    //Det betyder at de kun kan tilgås via klassens egne metoder.
     private final int number;
     private final String name;
     private final double price;
 
+
+    //Konstruktør - bruges internt i enum til at initialisere konstanterne.
+    //Enum-Konstruktør er altid private, selvom man ikke skriver det.
     Pizza(int number, String name, double price) {
         this.number = number;
         this.name = name;
         this.price = price;
     }
 
+//Getter for Pizzanummer (bruges f.eks. til inputvalg)
     public int getNumber() {
         return number;
     }
-
+// Getter for navn (bruges i brugergrænseflade og til udskrivning)
     public String getName() {
         return name;
     }
@@ -54,6 +60,8 @@ public enum Pizza {
     public double getPrice() {
         return price;
     }
+//Finder en pizza baseret på det angivne nummer
+//Bruges som hjælpemetode ved brugerinput
 
     public static Pizza getByNumber(int number) {
         for (Pizza pizza : values()) {
@@ -61,10 +69,11 @@ public enum Pizza {
                 return pizza;
             }
         }
-
         return null;
     }
 
+    //Overskrivning af toString - ændrer hvordan en pizza vises
+    //Eksempelvis - 1. Margherita, 90kr
     @Override
     public String toString() {
         return number + ". " + name + ". " + price + "kr";
