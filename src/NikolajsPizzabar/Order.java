@@ -17,7 +17,7 @@ public class Order implements Serializable {
     // Endelige instansfelter – når de er sat i konstruktøren, kan de ikke ændres
     private final int id;
     private final Pizza pizza;                  // Enum-type (fast værdisæt, OOP-koncept)
-    private final LocalDateTime pickupTime;     // Tidspunkt for afhentning
+    private final LocalDateTime pickupTime;// Tidspunkt for afhentning
 
     /**
      * Konstruktør – opretter en ny ordre med automatisk ID og brugerinput for pizza og tidspunkt.
