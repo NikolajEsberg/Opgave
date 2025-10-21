@@ -39,13 +39,11 @@ public class Order implements Serializable {
     // Returnerer pizzaen i ordren
     public Pizza getPizza() { return pizza; }
 
-    // Returnerer afhentiningstidspunktet
-    public LocalDateTime getPickupTime() { return pickupTime; }
+    //
+    public LocalDateTime getPickupTime() { return pickupTime;}
 
-    // Sætter næste ID
     public static void setNextId(int next) { nextId = next; }
 
-    // Gør det letter at vise ordren som tekst
     @Override
     public String toString(){
         return String.format("ID: %d | %s | Afhentes: %s",
