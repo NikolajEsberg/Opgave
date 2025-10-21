@@ -3,7 +3,7 @@ package MariosPizzaBar;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Ordermanager {
+public class OrderManager {
 
     private List<Order> activeOrders = new ArrayList<>();
     private List<Order> readyOrders = new ArrayList<>();
