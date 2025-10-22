@@ -2,12 +2,12 @@ package MariosPizzaBar;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-// Repræsentere en ordre i Marios Pizzabar
-// implementerer Serializable, så ordren kan gemmes til en fil
+// Repræsenterer en ordre i Marios Pizzabar
+// Implementerer Serializable, så ordren kan gemmes til en fil
 public class Order implements Serializable {
 
-    // gør det muligt at gemme objektet
     private static final long serialVersionUID = 1L;
 
     // Holder styr på, hvilket ID den næste ordre skal have
@@ -25,7 +25,7 @@ public class Order implements Serializable {
     // Navn på kunden, der har bestilt
     private final String customerName;
 
-    // Opretter en ny ordre og udeler automatisk et ID
+    // Opretter en ny ordre og uddelegerer automatisk et ID
     public Order(Pizza pizza, LocalDateTime pickupTime, String customerName) {
         this.id = nextId++;
         this.pizza = pizza;
@@ -33,24 +33,26 @@ public class Order implements Serializable {
         this.customerName = customerName;
     }
 
-    // Returnerer ordre-ID
+    // Getter for ID
     public int getId() { return id; }
 
-    // Returnerer pizzaen i ordren
+    // Getter for pizza
     public Pizza getPizza() { return pizza; }
 
-    //
-    public LocalDateTime getPickupTime() { return pickupTime;}
+    // Getter for afhentningstidspunkt
+    public LocalDateTime getPickupTime() { return pickupTime; }
 
+    // Setter til at genskabe ID efter indlæsning fra fil
     public static void setNextId(int next) { nextId = next; }
 
+    // Overskriver toString for at vise ordren på en pæn måde
     @Override
-    public String toString(){
+    public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         return String.format("ID: %d | Kunde: %s | Pizza: %s | Afhentning: %s",
                 id,
                 customerName,
                 pizza.getName(),
-                pickupTime.toLocalTime().toString());
+                pickupTime.toLocalTime().format(formatter));
     }
-
 }
