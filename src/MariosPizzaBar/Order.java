@@ -46,10 +46,11 @@ public class Order implements Serializable {
 
     @Override
     public String toString(){
-        return String.format("ID: %d | %s | Afhentes: %s",
+        return String.format("ID: %d | Kunde: %s | Pizza: %s | Afhentning: %s",
                 id,
                 customerName,
                 pizza.getName(),
-                pickupTime.toLocalTime());
+                pickupTime.toLocalTime().toString());
     }
+
 }
