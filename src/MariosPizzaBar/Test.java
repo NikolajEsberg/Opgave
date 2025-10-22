@@ -138,15 +138,16 @@ public class Test {
                         int hour = Integer.parseInt(parts[0]);
                         int minute = Integer.parseInt(parts[1]);
 
-                        // Opret afhentningstidspunkt
                         LocalDateTime pickup = LocalDateTime.now()
                                 .withHour(hour)
                                 .withMinute(minute)
                                 .withSecond(0)
                                 .withNano(0);
 
-                        // Opret ny ordre
-                        Order order = new Order(pizza, pickup, pizza.name());
+                        System.out.print("Indtast dit navn: ");
+                        String customerName = scanner.nextLine();
+
+                        Order order = new Order(pizza, pickup, customerName);
                         orderManager.addOrder(order);
                         System.out.println("Ordre oprettet: " + order);
                     } catch (Exception e) {
