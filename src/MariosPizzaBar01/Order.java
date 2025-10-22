@@ -49,10 +49,7 @@ public class Order implements Serializable {
     @Override
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        return String.format("ID: %d | Kunde: %s | Pizza: %s | Afhentning: %s",
-                id,
-                customerName,
-                pizza.getName(),
-                pickupTime.toLocalTime().format(formatter));
+        return ("ID: " + id + " | Kunde: " + customerName + "| Pizza: " + pizza.getName() + " " +  pizza.getPrice() +" kr. " + "Afhentning: " + pickupTime.toLocalTime().format(formatter));
+
     }
 }
