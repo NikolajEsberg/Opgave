@@ -1,7 +1,7 @@
-package MariosPizzaBar;
+package MariosPizzaBar01;
 //Enum Pizza repræsentere faste værdier. Altså herunder kan vi se Menukortet for Marios Pizzarier.
 //Vi har tilføjet 30 forskellige pizzaer, og hvert pizza består af et nummer, navn og pris.
-public enum Pizza { 
+public enum Pizza {
     MARGHERITA(1, "Margherita", 90),
     PEPPERONI(2, "Pepperoni", 95),
     VEGETAR(3, "Vegetar", 100),
@@ -48,11 +48,11 @@ public enum Pizza {
         this.price = price;
     }
 
-//Getter for Pizzanummer (bruges f.eks. til inputvalg)
+    //Getter for Pizzanummer (bruges f.eks. til inputvalg)
     public int getNumber() {
         return number;
     }
-// Getter for navn (bruges i brugergrænseflade og til udskrivning)
+    // Getter for navn (bruges i brugergrænseflade og til udskrivning)
     public String getName() {
         return name;
     }

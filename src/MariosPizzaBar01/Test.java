@@ -1,4 +1,4 @@
-package MariosPizzaBar;
+package MariosPizzaBar01;
 
 import java.time.LocalDateTime;
 import java.util.Scanner;
@@ -59,7 +59,7 @@ public class Test {
         }
     }
 
-   //Menu for Mario
+    //Menu for Mario
     private static String marioMenu(OrderManager orderManager, Scanner scanner) {
         while (true) {
             System.out.println("\n[MARIO] Hvad vil du gøre?");
