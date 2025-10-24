@@ -103,6 +103,7 @@ public class Test {
     //Den bruger et while (true)-loop, hvilket betyder at menuen kører i en uendelig løkke, indtil der sker et “break” eller return et sted senere i koden.
     private static String alfonsoMenu(OrderManager orderManager, Scanner scanner) {
         while (true) {
+            //her vises hovedmenuen
             System.out.println("\n[ALFONSO] Hvad vil du gøre?");
             System.out.println("1. Vis menukort");
             System.out.println("2. Opret ny ordre");
@@ -110,56 +111,62 @@ public class Test {
             System.out.println("4. Markér ordre som hentet");
             System.out.println("5. Skift bruger til Mario");
             System.out.println("6. Afslut program");
-
+            //Læser brugerens valg som tekst, da det er en "String Choice"
             String choice = scanner.nextLine();
-
+            //Switch-statment bruges til at håndtere de forskellige menupunkter
             switch (choice) {
                 case "1":
-                    // Vis hele menukortet
+                    // Viser alle pizzaer i menukortet, fra Enum.
                     for (Pizza p : Pizza.values()) {
                         System.out.println(p);
                     }
                     break;
 
                 case "2":
+                    //Her kan de oprette en ny ordre, når de indtaster pizzanumeret.
                     try {
                         System.out.print("Indtast pizzanummer: ");
                         int pizzaNr = Integer.parseInt(scanner.nextLine());
-
+                        //finder pizzaen ud fra nummeret
                         Pizza pizza = Pizza.getByNumber(pizzaNr);
                         if (pizza == null) {
                             System.out.println("Ugyldigt pizzanummer.");
-                            break;
+                            break; //If pizza == null springer ud af case, hvis nummeret ikke eksistere.
                         }
 
-                        System.out.print("Indtast afhentningstid (HH:mm): ");
+                        // Deler tidspunktet op i timer og minutter.
+                        System.out.print("Indtast afhentningstid (HH:MM): ");
                         String timeInput = scanner.nextLine();
                         String[] parts = timeInput.split(":");
                         int hour = Integer.parseInt(parts[0]);
                         int minute = Integer.parseInt(parts[1]);
-
+                        // her oprettes der et localDateTime-Objekt til afhentningstiden.
                         LocalDateTime pickup = LocalDateTime.now()
                                 .withHour(hour)
                                 .withMinute(minute)
                                 .withSecond(0)
                                 .withNano(0);
-
+                        //Alfonso indtaster kundens navn her
                         System.out.print("Indtast dit navn: ");
                         String customerName = scanner.nextLine();
-
+                        //Opretter ny ordre og tilføjer den til OrderManager
                         Order order = new Order(pizza, pickup, customerName);
                         orderManager.addOrder(order);
+                        //Bekræftelse af at ordren blev oprettet.
                         System.out.println("Ordre oprettet: " + order);
                     } catch (Exception e) {
+                        //fanger fejl ved brugerinput (fe.sk. forkert format)
                         System.out.println("Fejl i input: " + e.getMessage());
                     }
                     break;
 
                 case "3":
+                    //viser alle ordrer der er klar til afhentning
                     orderManager.showReadyOrders();
                     break;
 
                 case "4":
+                    //markere en ordre som afhentet
                     System.out.print("Indtast ordre-ID som er hentet: ");
                     try {
                         int id = Integer.parseInt(scanner.nextLine());
@@ -170,8 +177,9 @@ public class Test {
                     break;
 
                 case "5":
+                    //her vælger alfonoso eller mario at skifte til mario-menuen
                     return "Mario";
-
+                //afslutter hele programmet.
                 case "6":
                     System.out.println("Farvel!");
                     System.exit(0);
