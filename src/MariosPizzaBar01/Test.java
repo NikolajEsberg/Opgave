@@ -13,9 +13,9 @@ public class Test {
 
         //Filhåndtering indlæsr ordrer fra fil ved programstart
         if (FileHandler.loadOrders(orderManager)) {
-            System.out.println("✅ Ordrer indlæst fra fil.");
+            System.out.println("Ordrer indlæst fra fil.");
         } else {
-            System.out.println("🔄 Ingen gemte ordrer fundet. Starter frisk.");
+            System.out.println("Ingen gemte ordrer fundet. Starter frisk.");
         }
 
         // Shutdown hook gemmer ordrer automatisk når programmet afsluttes
@@ -25,7 +25,7 @@ public class Test {
                     orderManager.getReadyOrders(),
                     orderManager.getCompletedOrders()
             );
-            System.out.println("\n💾 Ordrer gemt før programmet lukkede.");
+            System.out.println("\nOrdrer gemt før programmet lukkede.");
         }));
 
         //Scanner bruges til at læse brugerinput fra konsollen
