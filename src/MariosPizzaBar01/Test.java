@@ -31,7 +31,7 @@ public class Test {
         //Scanner bruges til at læse brugerinput fra konsollen
         Scanner scanner = new Scanner(System.in);
         String currentRole = chooseRole(scanner);  // Mario eller Alfonso
-
+//While true loop der sørger for den rigtige menu bliver vist.
         while (true) {
             if ("Mario".equals(currentRole)) {
                 currentRole = marioMenu(orderManager, scanner);
@@ -70,7 +70,7 @@ public class Test {
             System.out.println("5. Afslut program");
 
             String choice = scanner.nextLine();
-
+//switch
             switch (choice) {
                 case "1":
                     orderManager.showActiveOrders();

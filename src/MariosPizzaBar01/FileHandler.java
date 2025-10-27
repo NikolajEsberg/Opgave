@@ -1,12 +1,12 @@
 package MariosPizzaBar01;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.List;
+import java.io.File; //Repræsentere en fil i systemet
+import java.io.FileInputStream; //Åbner en fil for læsning eller skrivning
+import java.io.FileOutputStream; //Åbner en fil for læsning eller skrivning
+import java.io.IOException; //Bruges til fejlhåndtering, hvis noget går galt med fil
+import java.io.ObjectInputStream; //Gør det muligt at læse og skrive hele java objekter(Ikke kun tekst).
+import java.io.ObjectOutputStream; //Gør det muligt at læse og skrive hele java objekter(Ikke kun tekst).
+import java.util.List; //Bruges fordi ordrene gemmes som liser af ordrer objekter
 
 //Klassen sørger for at vi kan læse og skrive en ordrer fra/til en fil.
 //Klassen benytter sig af objekt serialisering til at gemme ordre lokalt.
@@ -14,17 +14,14 @@ import java.util.List;
 
 public class FileHandler {
 
-    //Laver en konstant, hvilket sikrer at filnavnet ikke ændres utilsigtet.
+    //Laver en konstant FN (final), hvilket sikrer at filnavnet ikke ændres utilsigtet.
 
     private static final String FILE_NAME = "orders.dat";
 
     //Gemmer lister af ordrer til en fil ved hjælp af objekt serialisering.
-    //Liste "active" viser en liste af alle aktive ordrer.
-    //Liste "ready" viser en liste af alle ordrer klar til afhentning.
-    //Liste "completed" viser en liste af alle afsluttede ordrer.
 
     public static void saveOrders(List<Order> active, List<Order> ready, List<Order> completed) {
-        //try sørger for automatisk lukning af fil.
+        //Try den lukker automatisk når try-blokken slutter selv ved fejl.
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
             //Skriver hver liste til filen i rækkefølge.
             oos.writeObject(active);
