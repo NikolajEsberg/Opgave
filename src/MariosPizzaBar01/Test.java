@@ -97,7 +97,7 @@ public class Test {
             }
         }
     }
-
+//Hector
     //Menu for Alfanso
 
     //Den bruger et while (true)-loop, hvilket betyder at menuen kører i en uendelig løkke, indtil der sker et “break” eller return et sted senere i koden.
@@ -114,6 +114,7 @@ public class Test {
             //Læser brugerens valg som tekst, da det er en "String Choice"
             String choice = scanner.nextLine();
             //Switch-statment bruges til at håndtere de forskellige menupunkter
+            //AGAH
             switch (choice) {
                 case "1":
                     // Viser alle pizzaer i menukortet, fra Enum.
